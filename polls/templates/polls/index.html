@@ -1,0 +1,17 @@
+<!-- We can refer to this template within Django as simply polls/index.html -->
+
+<!-- Because we defined the name argument in the path() functions in the polls.urls module, you can remove a reliance on specific URL paths defined in your url configurations by using the {% url %} template tag -->
+
+<!-- {% url %} looks up the URL definition as specified in the polls.urls module. -->
+
+<!-- 'polls:' in the url reference below comes from the app_name defined in polls/urls.py -->
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+		<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li> 
+		{% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
